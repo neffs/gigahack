@@ -1,0 +1,26 @@
+Firmware files
+
+main firmware file
+------------
+http://gigaset.siemens.com/chagall/2/chagall191_02.bin
+
+
+customization
+------------
+
+Provisioning IDs:
+2: Gigaset since S450 IP
+18: Sinus 501V
+
+More files for Sinus 501V:
+http://gigaset.siemens.com/chagall/2/18/master.bin
+links to more files
+
+http://gigaset.siemens.com/chagall/2/18/baselines.bin
+link to current version for this device (currently 189)
+
+http://gigaset.siemens.com/chagall/2/18/d_tonline_de.bin
+includes standard settings for the device. interesting because it includes field names which can be directly mapped to addresses.
+
+master.bin and d_tonline_de.bin are configured in the eeprom
+gigaset versions can be downloaded by replacing 18 with 2
