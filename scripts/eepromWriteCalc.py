@@ -1,18 +1,22 @@
 #!/usr/bin/env python
 # encoding: utf-8
 """
-untitled.py
+eepromWriteCalc.py
 
-Created by neffs on 2009-10-04.
+Creates EEPROM Codes for (probably all) Gigaset Phones.
+
 Copyright (c) 2009 . All rights reserved.
 """
 
 import sys
 import os
 
-TARGET_ADDR = 5183
-CLEAR_BITS = 255
-SET_BITS = 0
+#target address (16 bits)
+TARGET_ADDR = 5183 
+#mask to change only certain bits (8 bits)
+BIT_MASK = 255
+#new value (8 bits)
+VALUE = 0
 
 
 #default settings for current IP base stations
@@ -23,15 +27,15 @@ KEY = 50074 #C39A
 
 def main():
     print "menu -> einstellungen -> basis -> 94762001"
-    print eepromCode(TARGET_ADDR, CLEAR_BITS, SET_BITS)
+    print eepromCode(TARGET_ADDR, BIT_MASK, VALUE)
     
 
-def eepromCode(addr, clear, set, version=EEPROM_VERSION, key=KEY):
+def eepromCode(addr, bit_mask, value, version=EEPROM_VERSION, key=KEY):
     """
     creates an EEPROM code for a specific Gigaset phone.
     addr: address of the byte to change
-    clear: bit mask, set to 255 if you want to replace all bits
-    set: bits to set
+    bit_mask: set to 255 if you want to replace all bits
+    value: new value, 1 byte
     version: EEPROM version, listed in web interface
     key: seems to be the same for all IP base stations
     btw. the "encryption" scheme is useless, the person who designed it should be fired.
@@ -53,7 +57,7 @@ def eepromCode(addr, clear, set, version=EEPROM_VERSION, key=KEY):
             data = data % (1<<8)
         return data
         
-    a = [version,addr,((set%(1<<8)) << 8)| clear%(1<<8)]
+    a = [version,addr,((value%(1<<8)) << 8)| bit_mask%(1<<8)]
     c = checksum(a)
     a[0] = a[0] | c << 8
     

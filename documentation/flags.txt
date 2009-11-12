@@ -4,6 +4,7 @@ Configuration Flags
 - first column = default on Sinus 501V
 - SHC = gigaset.net
 - some features have to be enabled here and in the IP eeprom area (e.g. Messenger)
+- took flag names from my notes, some may differ from names in the object files
 
 
 Example for editing the EEPROM
