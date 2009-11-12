@@ -1,0 +1,72 @@
+Configuration Flags
+
+- 1 byte consisting of 8 bit flags (MSB first)
+- first column = default on Sinus 501V
+- SHC = gigaset.net
+- some features have to be enabled here and in the IP eeprom area (e.g. Messenger)
+
+
+Example for editing the EEPROM
+-----
+To activate PSTN (makes no sense without the components)
+-edit Byte at 0x1ED5 = 7893 in decimal
+-default value is 2+4+64 = 70
+-to enable PSTN add 16 => 86
+
+
+0x1ED5
+--------
+0	?
+1	E-Mail List
+0	Messenger
+0	PSTN
+0	?
+1	Sec Check Reset
+1	DTAG Wording
+0	?
+
+
+0x1ED6
+--------
+1	Wideband
+0	Hold
+1	Conference
+1	AM
+1	?
+1	?
+0	WebTDT
+0	OCAPoE
+
+0x1F4E
+--------
+1	?
+1	?
+0	SHC In Webinterface
+0	SHC Net Phonebook
+0	Has SHC Netprofile
+0	Has Line Color Schemes
+1	?
+1	?
+
+0x1F53
+--------
+0	MMI Only
+0	Ignore Line Sel
+0	Detailed Entry Caller
+0	CID25
+0	Has barge in
+0	Providername in display
+0	ENGUS
+0	NET AM always PSTN
+
+
+0x1F54
+--------
+0	?
+1	?
+1	Info Screensaver
+1	Postfix dialing
+1	VoIP CTBA
+1	VoIP Call Transfer
+0	R Key is Flash key
+1	Send HF keys open redial
