@@ -1,0 +1,42 @@
+Description for Profile Files:
+
+All fields consist of header and length field, one byte each.
+Strings are terminated with 0-byte
+
+
+Using d_tonline_de.bin as an example
+
+Header
+-----------
+00 - header: timestamp field
+0B - length
+31 31 30 33 30 39 31 33 35 30 00 - 1103091350 Looks like a timestamp 11.03.09 13:50
+
+40 - filename
+11 - length
+645F746F6E6C696E655F64652E62696E00 (d_tonline_de.bin) - filename
+
+
+Key value encoded settings
+------------
+01 - header: key value field
+21 - length
+
+	02 - header: key
+	0D - length
+	535F5349505F444F4D41494E00 (S_SIP_DOMAIN) - name of field
+	05 - header: string
+	10 - length
+	74656C2E742D6F6E6C696E652E646500 - tel.t-online.de value
+	
+	
+------
+
+
+Header types (always used with length afterwards)
+01 - array
+02 - key
+03 - boolean
+04 - integer (big endian)
+05 - string
+40 - profile file name
