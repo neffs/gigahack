@@ -5,7 +5,8 @@ eepromWriteCalc.py
 
 Creates EEPROM Codes for (probably all) Gigaset Phones.
 
-Copyright (c) 2009 . All rights reserved.
+The interface was deactivated in Version 02214, don't update if you need this.
+
 """
 
 import sys
